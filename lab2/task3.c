@@ -2,12 +2,9 @@
 
 float pow_(float num, int power) {
 
-    if (power < 0) {
-        return 1 / (num * pow_(num, (-power) - 1));
-    }
-
     if (power == 0)
         return 1;
+
     if (power == 1)
         return num;
 

@@ -28,9 +28,9 @@ int main() {
     int r2 = (x2 - x0) * (x2 - x0) + (y2 - y0) * (y2 - y0);
 
     if (r2 == r1) {
-        printf("Point is in circle");
+        printf("Point is on circle");
     } else {
-        printf("Point isn't in circle");
+        printf("Point is out circle");
     }
 
     return 0;

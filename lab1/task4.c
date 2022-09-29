@@ -13,8 +13,6 @@ int strcmp_(char *s1, char *s2) {
 int main() {
     char dis[999];
 
-
-
     printf("Input discipline:");
     scanf("%s", dis);
 

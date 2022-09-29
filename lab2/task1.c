@@ -5,7 +5,7 @@ int main() {
 
     printf("Input m:");
     int check = scanf("%d", &m);
-    if (!check) {
+    if (!check || 10 >= m || m >= 50) {
         printf("Wrong input!");
         return 0;
     }
