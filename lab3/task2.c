@@ -51,7 +51,16 @@ int main() {
     }
 
 
-    int k = 3, sub = 0, static_len = len;
+    int k;
+
+    printf("Input k:");
+    while (!scanf("%d", &k) || k <= 0 || k > len) {
+        printf("Wrong k, input again:");
+        rewind(stdin);
+    }
+
+
+    int sub = 0, static_len = len;
 
     for (int i = 0; i < static_len; i++) {
         if (!((i + 1) % k)) {

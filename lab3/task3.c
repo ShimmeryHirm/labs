@@ -109,7 +109,7 @@ int main() {
     } else if (num_cmp_(num1, num2) > 0) {
 
 
-        for (int i = len; i >= 0; i--) {
+        for (int i = len - 1; i >= 0; i--) {
             sub = num1[i] - num2[i];
             if (sub < 0) {
                 sub = num1[i] + 10 - num2[i];
@@ -131,7 +131,7 @@ int main() {
         }
     } else {
 
-        for (int i = len; i >= 0; i--) {
+        for (int i = len - 1; i >= 0; i--) {
             sub = num2[i] - num1[i];
             if (sub < 0) {
                 sub = num2[i] + 10 - num1[i];
