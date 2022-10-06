@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
@@ -51,18 +50,21 @@ int main() {
         }
     }
     int center = size / 2;
-    int sum = 0;
+    int min = arr[size - 1][size - 1];
 
     int k = 0;
     for (int j = size - 1; j >= center; j--) {
 
         for (int i = k; i < size - k; i++) {
-            sum += arr[i][j];
+            
+            if (arr[i][j] < min) {     
+                min = arr[i][j];
+                }
         }
         k++;
     }
 
-    printf("Result: %d", sum);
+    printf("Result: %d", min);
 
     return 0;
-}
+    }
