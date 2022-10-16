@@ -2,5 +2,5 @@
 /cmake-build-debug-event-trace
 /cmake-build-debug-coverage
 /.idea
-
-CMakeLists.txt
+/reports
+/bench

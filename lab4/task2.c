@@ -34,14 +34,14 @@ int main() {
 
 
     if (mode == 'y') {
-        printf("Generated array:\n");
+        printf("\nGenerated array:\n");
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < col; j++) {
                 arr[i][j] = rand() % 11;
                 if (arr[i][j] < 3) {
                     arr[i][j] *= -1;
                 }
-                printf("%.0f ", arr[i][j]);
+                printf("%.0f \t", arr[i][j]);
             }
             printf("\n");
         }
@@ -57,12 +57,13 @@ int main() {
             printf("\n");
         }
     }
+
+
     int flag = 0;
     int zero_i;
+
     for (int i = 0; i < rows; i++) {
-
         for (int j = 0; j < col; j++) {
-
 
             if (arr[i][j] < 0) {
                 flag = 1;
@@ -70,10 +71,10 @@ int main() {
                 break;
             }
         }
+
         if (flag) {
             break;
         }
-
 
     }
 
@@ -87,10 +88,10 @@ int main() {
 
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < col; j++) {
-            if ((int)arr[i][j] != arr[i][j]) {
-                printf("%.1f ", arr[i][j]);
+            if ((int) arr[i][j] != arr[i][j]) {
+                printf("%.1f\t", arr[i][j]);
             } else {
-                printf("%.0f ", arr[i][j]);
+                printf("%.0f\t", arr[i][j]);
 
             }
 

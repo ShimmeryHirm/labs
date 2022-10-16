@@ -34,7 +34,7 @@ int main() {
 
 
     if (mode == 'y') {
-        printf("Generated array:\n");
+        printf("\nGenerated array:\n");
         for (int i = 0; i < rows; i++) {
             arr[i][col] = 0;
             for (int j = 0; j < col; j++) {
@@ -70,7 +70,7 @@ int main() {
 
         for (int i = k; i < rows; i++) {
             if (arr[i][col] > max) {
-                max = arr[i][col];
+                max  = arr[i][col];
                 max_i = i;
             }
         }
@@ -78,7 +78,6 @@ int main() {
 
         for (int i = 0; i <= col; i++) {
             tmp[i] = arr[max_i][i];
-
         }
 
 
@@ -87,6 +86,8 @@ int main() {
                 arr[i][j] = arr[i - 1][j];
             }
         }
+
+
         for (int i = 0; i <= col; i++) {
             arr[k][i] = tmp[i];
         }

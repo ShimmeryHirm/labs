@@ -60,9 +60,10 @@ int main() {
     }
 
 
-    int sub = 0, static_len = len;
+    int sub = 0;
 
-    for (int i = 0; i < static_len; i++) {
+    for (int i = 0; i < len + sub; i++) {
+
         if (!((i + 1) % k)) {
             for (int j = i - sub; j < len; j++) {
                 arr[j] = arr[j + 1];

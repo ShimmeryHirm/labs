@@ -90,7 +90,7 @@ int main() {
             for (int i = 0; i < len; i++) {
                 num2[i] = c[i] - 48;
 
-                if (!(0 < num2[i] && num2[i] < 10)) {
+                if (!(0 < num2[i] && num2[i] < 58)) {
                     break;
                 }
                 cnt++;
@@ -100,58 +100,45 @@ int main() {
     }
 
 
-    int sub, null = 0;
+    int sub, null = 0, tmp;
+
+    printf("Result: ");
 
     if (abs_((num_cmp_(num1, num2))) > 9) {
-        printf("Result: 0");
+        printf("0");
         return 0;
 
-    } else if (num_cmp_(num1, num2) > 0) {
-
-
-        for (int i = len - 1; i >= 0; i--) {
-            sub = num1[i] - num2[i];
-            if (sub < 0) {
-                sub = num1[i] + 10 - num2[i];
-                num1[i - 1]--;
-            }
-            num1[i] = sub;
-        }
-
-
-        printf("Result: ");
+    } else if (num_cmp_(num1, num2) < 0) {
+        printf("-");
         for (int i = 0; i < len; i++) {
-            if (num1[i] != 0) {
-                null = 1;
-            }
-            if (null) {
-                printf("%d", num1[i]);
-            }
-
-        }
-    } else {
-
-        for (int i = len - 1; i >= 0; i--) {
-            sub = num2[i] - num1[i];
-            if (sub < 0) {
-                sub = num2[i] + 10 - num1[i];
-                num2[i - 1]--;
-            }
-            num2[i] = sub;
-        }
-
-
-        printf("Result: -");
-        for (int i = 0; i < len; i++) {
-            if (num2[i] != 0) {
-                null = 1;
-            }
-            if (null) {
-                printf("%d", num2[i]);
-            }
+            tmp = num2[i];
+            num2[i] = num1[i];
+            num1[i] = tmp;
 
         }
     }
+
+
+    for (int i = len - 1; i >= 0; i--) {
+        sub = num1[i] - num2[i];
+        if (sub < 0) {
+            sub = num1[i] + 10 - num2[i];
+            num1[i - 1]--;
+        }
+        num1[i] = sub;
+    }
+
+
+    for (int i = 0; i < len; i++) {
+        if (num1[i] != 0) {
+            null = 1;
+        }
+        if (null) {
+            printf("%d", num1[i]);
+        }
+
+    }
+
 
     return 0;
 }

@@ -9,7 +9,7 @@ float abs_(float value) {
 
 float rand_f() {
 
-    return ((float) rand() / (float) (RAND_MAX)) * 50;
+    return ((float) rand() / (float) (RAND_MAX)) * 10;
 
 }
 
@@ -25,15 +25,16 @@ int main() {
         printf("Wrong len, input again:");
         rewind(stdin);
     }
-
-
     float arr[len];
-    printf("Fill array random numbers? [y/n]");
-    scanf(" %c", &mode);
-    while (mode != 'y' && mode != 'n') {
 
-        printf("Wrong answer, input again:");
-        scanf(" %c", &mode);
+    printf("Fill array random numbers? [y/n]");
+
+
+
+    while (!scanf(" %c", &mode) && mode != 'y' && mode != 'n' || getchar() != '\n') {
+
+        printf("Wrong input because you stupid dolboeb. Input again: ");
+
         rewind(stdin);
     }
 
@@ -56,29 +57,28 @@ int main() {
     }
 
 
-    float max = abs_(arr[0]);
-    int index = 0;
+    float max, sum = 0;
+    int pos_check = 0, index = 0;
+
+    max = abs_(arr[0]);
+
     for (int i = 0; i < len; i++) {
+
+        if (pos_check) {
+            sum += arr[i];
+        } else if (arr[i] > 0) {
+            pos_check = 1;
+        }
+
+
         if (max < abs_(arr[i])) {
             max = abs_(arr[i]);
             index = i;
         }
     }
-    printf("Max value index: %d\n", index);
-
-
-    float sum = 0;
-    int pos_check = 0;
-    for (int i = 0; i < len; i++) {
-        if (pos_check) {
-            sum += arr[i];
-        }
-        if (arr[i] > 0) {
-            pos_check = 1;
-        }
-    }
 
     printf("Sum: %f", sum);
+    printf("\nMax value index: %d\n", index);
 
 
     return 0;

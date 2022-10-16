@@ -29,7 +29,7 @@ int main() {
 
 
     if (mode == 'y') {
-        printf("Generated array:\n");
+        printf("\nGenerated array:\n");
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 arr[i][j] = rand() % 10;
@@ -49,22 +49,24 @@ int main() {
             printf("\n");
         }
     }
+
     int center = size / 2;
     int min = arr[size - 1][size - 1];
 
     int k = 0;
+
     for (int j = size - 1; j >= center; j--) {
 
         for (int i = k; i < size - k; i++) {
-            
-            if (arr[i][j] < min) {     
+
+            if (arr[i][j] < min) {
                 min = arr[i][j];
-                }
+            }
         }
         k++;
     }
 
-    printf("Result: %d", min);
+    printf("\nResult: %d", min);
 
     return 0;
-    }
+}
