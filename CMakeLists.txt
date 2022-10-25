@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.23)
 project(oaip_lab C)
 
-set(CMAKE_C_STANDARD 11)
+set(ClMAKE_C_STANDARD 11)
 
 
 add_executable(l1.1
@@ -45,3 +45,9 @@ add_executable(l4.2
 
 add_executable(l4.3
         lab4/task3.c)
+
+add_executable(l5.1
+        lab5/task1.c lab5/arrays.h)
+
+add_executable(l5.3
+        lab5/task3.c lab5/arrays.h)
