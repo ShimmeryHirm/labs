@@ -79,7 +79,6 @@ int main() {
     }
 
     if (flag) {
-
         for (int i = 0; i < col; i++) {
             arr[i][zero_i] /= 2;
         }

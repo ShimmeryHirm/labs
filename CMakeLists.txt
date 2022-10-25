@@ -49,5 +49,8 @@ add_executable(l4.3
 add_executable(l5.1
         lab5/task1.c lab5/arrays.h)
 
+add_executable(l5.2
+        lab5/task2.c lab5/arrays.h)
+
 add_executable(l5.3
         lab5/task3.c lab5/arrays.h)

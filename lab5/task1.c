@@ -2,11 +2,14 @@
 
 int main() {
 
-    int len = 5, *arr;
+    int len;
+    input(&len, 1, 10, "Input len:");
 
-    fill_row(&arr, len * 2);
-    power_row(arr, len);
-    out_row(arr, len * 2);
+    int *arr = (int *) malloc(len * 2 * sizeof(int *));
+
+    fill_array(arr, len);
+    power_array(arr, len);
+    out_row(arr, len * 2, 0);
 
     return 0;
 }

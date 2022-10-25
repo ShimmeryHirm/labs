@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include "../lab5/arrays.h"
 
 
 int main() {
@@ -24,11 +25,9 @@ int main() {
     int arr[rows][col + 1];
 
     printf("Fill matrix random numbers? [y/n]");
-    scanf(" %c", &mode);
-    while (mode != 'y' && mode != 'v') {
 
+    while (!scanf(" %c", &mode) || (mode != 'y' && mode != 'v') || getchar() != '\n') {
         printf("Wrong answer, input again:");
-        scanf(" %c", &mode);
         rewind(stdin);
     }
 
@@ -70,7 +69,7 @@ int main() {
 
         for (int i = k; i < rows; i++) {
             if (arr[i][col] > max) {
-                max  = arr[i][col];
+                max = arr[i][col];
                 max_i = i;
             }
         }
