@@ -9,9 +9,9 @@ int main() {
 
     int **arr = (int **) malloc(rows * sizeof(int *));
 
-    fill_matrix(arr, rows, cols, INT_MIN);
+    fill_matrix(arr, rows, cols);
     remove_neg_columns(arr, rows, &cols);
-    print_matrix(arr, rows, cols, false);
+    print_matrix(arr, rows, cols);
 
     return 0;
 }

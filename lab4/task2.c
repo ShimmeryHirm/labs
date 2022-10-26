@@ -47,7 +47,7 @@ int main() {
         }
     } else {
         for (int i = 0; i < rows; i++) {
-            printf("Input %d elements of row %d:", col, i);
+            printf("Input %d elements of td_array %d:", col, i);
             for (int j = 0; j < col; j++) {
                 while (!scanf("%f", &arr[i][j])) {
                     printf("Wrong elem, input again:");

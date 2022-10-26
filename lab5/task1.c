@@ -9,7 +9,7 @@ int main() {
 
     fill_array(arr, len);
     power_array(arr, len);
-    out_row(arr, len * 2, 0);
+    out_row(arr, len * 2);
 
     return 0;
 }
