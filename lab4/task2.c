@@ -1,103 +1,84 @@
-#include <stdio.h>
 #include <time.h>
-#include <stdlib.h>
+#include "arrays.h"
 
 
-int main() {
-    int rows, col;
-    char mode;
-
-    srand(time(NULL));
-
-    printf("Input matrix rows:");
-    while (!scanf("%d", &rows) || rows <= 0) {
-        printf("Wrong rows, input again:");
-        rewind(stdin);
-    }
-
-    printf("Input matrix columns:");
-    while (!scanf("%d", &col) || col <= 0) {
-        printf("Wrong columns, input again:");
-        rewind(stdin);
-    }
-
-    float arr[rows][col];
-
-    printf("Fill matrix random numbers? [y/n]");
-    scanf(" %c", &mode);
-    while (mode != 'y' && mode != 'v') {
-
-        printf("Wrong answer, input again:");
-        scanf(" %c", &mode);
-        rewind(stdin);
-    }
-
-
-    if (mode == 'y') {
-        printf("\nGenerated array:\n");
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < col; j++) {
-                arr[i][j] = rand() % 11;
-                if (arr[i][j] < 3) {
-                    arr[i][j] *= -1;
-                }
-                printf("%.0f \t", arr[i][j]);
-            }
-            printf("\n");
-        }
-    } else {
-        for (int i = 0; i < rows; i++) {
-            printf("Input %d elements of td_array %d:", col, i);
-            for (int j = 0; j < col; j++) {
-                while (!scanf("%f", &arr[i][j])) {
-                    printf("Wrong elem, input again:");
-                    rewind(stdin);
-                }
-            }
-            printf("\n");
-        }
-    }
-
-
-    int flag = 0;
-    int zero_i;
+void print_matrix_(int rows, int cols, float arr[rows][cols]) {
 
     for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < col; j++) {
-
-            if (arr[i][j] < 0) {
-                flag = 1;
-                zero_i = j;
-                break;
-            }
-        }
-
-        if (flag) {
-            break;
-        }
-
-    }
-
-    if (flag) {
-        for (int i = 0; i < col; i++) {
-            arr[i][zero_i] /= 2;
-        }
-    }
-    printf("\n");
-
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < col; j++) {
+        for (int j = 0; j < cols; j++) {
             if ((int) arr[i][j] != arr[i][j]) {
                 printf("%.1f\t", arr[i][j]);
             } else {
                 printf("%.0f\t", arr[i][j]);
-
             }
-
         }
         printf("\n");
     }
+}
 
+
+float edit(int rows, int cols, float arr[rows][cols]) {
+
+    int flag = false;
+    int zero_i;
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (arr[i][j] < 0) {
+                flag = true;
+                zero_i = j;
+                break;
+            }
+        }
+        if (flag) break;
+    }
+
+    if (flag) {
+        for (int i = 0; i < cols; i++) {
+            arr[i][zero_i] /= 2;
+        }
+    }
+    return arr[cols][rows];
+}
+
+
+int main() {
+
+    srand(time(NULL));
+
+    int rows, cols;
+    char mode;
+
+    input(&rows, 1, 100, "Input rows:");
+    input(&cols, 1, 100, "Input columns:");
+
+    float arr[rows][cols];
+
+    printf("Fill matrix random numbers? [y/n]");
+    while (!scanf(" %c", &mode) || (mode != 'y' && mode != 'n') || getchar() != '\n') {
+        printf("Wrong answer, input again:");
+        rewind(stdin);
+    }
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (mode == 'y') {
+                arr[i][j] = rand() % 20 - 10;
+            } else {
+                printf("Input %d elements of row %d:", cols, i + 1);
+                input(&arr[i][j], INT_MIN, INT_MAX, "");
+            }
+        }
+    }
+
+    printf("Input array:\n");
+    print_matrix_(rows, cols, arr);
+
+    arr[cols][rows] = edit(rows, cols, arr);
+
+    printf("\n");
+    print_matrix_(rows, cols, arr);
 
     return 0;
 }
+

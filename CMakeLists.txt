@@ -3,6 +3,7 @@ project(oaip_lab C)
 
 set(ClMAKE_C_STANDARD 11)
 
+include_directories(include)
 
 add_executable(l1.1
         lab1/task1.c)
@@ -47,10 +48,16 @@ add_executable(l4.3
         lab4/task3.c)
 
 add_executable(l5.1
-        lab5/task1.c lab5/arrays.h)
+        lab5/task1.c)
 
 add_executable(l5.2
-        lab5/task2.c lab5/arrays.h)
+        lab5/task2.c)
 
 add_executable(l5.3
-        lab5/task3.c lab5/arrays.h)
+        lab5/task3.c)
+
+add_executable(l6.1
+        lab6/task1.c)
+
+add_executable(l6.2
+        lab6/task2.c)

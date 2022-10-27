@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "io.h"
 
 typedef struct {
-    int len;
+    int character;
     int *arr;
 } td_array;
 
@@ -13,24 +13,12 @@ typedef enum {
 } bool;
 
 
-void input(int *var, int min, int max, char *str) {
-
-    printf("%s", str);
-    while (!scanf("%d", var) || (*var > max && max != INT_MAX) ||
-           (*var < min && min != INT_MIN) || getchar() != '\n') {
-        printf("Wrong input! Enter again:");
-        rewind(stdin);
-    }
-}
-
-
-void out_row(int *arr, int len) {
+void print_row(int *arr, int len) {
 
     for (int i = 0; i < len; i++) {
         printf("%d ", arr[i]);
     }
 }
-
 
 void fill_array(int *arr, int len) {
 
@@ -54,7 +42,7 @@ void fill_2d_array(td_array *arr, int rows) {
     for (int i = 0; i < rows; i++) {
 
         int inp = 0;
-        arr[i].len = 0;
+        arr[i].character = 0;
         arr[i].arr = (int *) malloc(0);
 
         while (inp != -1) {
@@ -62,9 +50,9 @@ void fill_2d_array(td_array *arr, int rows) {
             input(&inp, -1, INT_MAX, "Input elem:");
             if (inp == -1) { break; }
 
-            arr[i].len++;
-            arr[i].arr = (int *) realloc(arr[i].arr, arr[i].len * sizeof(int *));
-            arr[i].arr[arr[i].len - 1] = inp;
+            arr[i].character++;
+            arr[i].arr = (int *) realloc(arr[i].arr, arr[i].character * sizeof(int *));
+            arr[i].arr[arr[i].character - 1] = inp;
         }
     }
 }
@@ -72,7 +60,7 @@ void fill_2d_array(td_array *arr, int rows) {
 void print_2d_array(td_array *arr, int rows) {
 
     for (int i = 0; i < rows; i++) {
-        out_row(arr[i].arr, arr[i].len);
+        print_row(arr[i].arr, arr[i].character);
         printf("\n");
     }
 }
@@ -81,7 +69,7 @@ void print_2d_array(td_array *arr, int rows) {
 void print_matrix(int **matrix, int rows, int columns) {
 
     for (int i = 0; i < rows; i++) {
-        out_row(matrix[i], columns);
+        print_row(matrix[i], columns);
         printf("\n");
     }
 }
@@ -129,8 +117,7 @@ void remove_columns_after_index(td_array *arr, int rows, int start_index) {
 
     for (int i = 0; i < rows; i++) {
 
-        if (arr[i].len <= start_index) { continue; }
-        arr[i].len = start_index + 1;
-        arr[i].arr = (int *) realloc(arr[i].arr, arr[i].len * sizeof(int *));
+        if (arr[i].character < start_index) { continue; }
+        arr[i].character = start_index;
     }
 }

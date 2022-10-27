@@ -1,6 +1,5 @@
 #include "arrays.h"
 
-
 int main() {
 
     int rows, k;
@@ -10,6 +9,9 @@ int main() {
 
     td_array *arr = (td_array *) (int **) malloc(rows * sizeof(td_array *));
     fill_2d_array(arr, rows);
+
+    printf("In matrix:\n");
+    print_2d_array(arr, rows);
 
     remove_columns_after_index(arr, rows, k);
 
