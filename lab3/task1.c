@@ -20,9 +20,9 @@ int main() {
     srand(time(NULL));
 
 
-    printf("Input array len:");
+    printf("Input array charact:");
     while (!scanf("%d", &len) || len <= 0) {
-        printf("Wrong len, input again:");
+        printf("Wrong charact, input again:");
         rewind(stdin);
     }
     float arr[len];

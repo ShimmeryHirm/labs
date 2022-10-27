@@ -1,54 +1,17 @@
-#include <stdio.h>
 #include <time.h>
-#include <stdlib.h>
+#include "arrays.h"
 
 
-int main() {
-    int size;
-    char mode;
+void print_matrix_(int rows, int cols, int arr[rows][cols]) {
 
-    srand(time(NULL));
-
-    printf("Input matrix size:");
-    while (!scanf("%d", &size) || size <= 0) {
-        printf("Wrong rows, input again:");
-        rewind(stdin);
+    for (int i = 0; i < rows; i++) {
+        print_row(arr[i], cols);
+        printf("\n");
     }
+}
 
 
-    int arr[size][size];
-
-    printf("Fill matrix random numbers? [y/n]");
-    scanf(" %c", &mode);
-    while (mode != 'y' && mode != 'v') {
-
-        printf("Wrong answer, input again:");
-        scanf(" %c", &mode);
-        rewind(stdin);
-    }
-
-
-    if (mode == 'y') {
-        printf("\nGenerated array:\n");
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                arr[i][j] = rand() % 10;
-                printf("%d ", arr[i][j]);
-            }
-            printf("\n");
-        }
-    } else {
-        for (int i = 0; i < size; i++) {
-            printf("Input %d elements of td_array %d:", size, i);
-            for (int j = 0; j < size; j++) {
-                while (!scanf("%d", &arr[i][j])) {
-                    printf("Wrong elem, input again:");
-                    rewind(stdin);
-                }
-            }
-            printf("\n");
-        }
-    }
+int find_min(int size, int arr[size][size]) {
 
     int center = size / 2;
     int min = arr[size - 1][size - 1];
@@ -65,8 +28,44 @@ int main() {
         }
         k++;
     }
+    return min;
+}
 
-    printf("\nResult: %d", min);
+
+int main() {
+
+    srand(time(NULL));
+
+    int size, min;
+    char mode;
+
+    input(&size, 1, 100, "Input size:");
+
+    int arr[size][size];
+
+    printf("Fill matrix random numbers? [y/n]");
+    while (!scanf(" %c", &mode) || (mode != 'y' && mode != 'n') || getchar() != '\n') {
+        printf("Wrong answer, input again:");
+        rewind(stdin);
+    }
+
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            if (mode == 'y') {
+                arr[i][j] = rand() % 20 - 10;
+            } else {
+                printf("Input %d elements of row %d:", size, i + 1);
+                input(&arr[i][j], INT_MIN, INT_MAX, "");
+            }
+        }
+    }
+
+    printf("Input array:\n");
+    print_matrix_(size, size, arr);
+
+    min = find_min(size, arr);
+
+    printf("Result: %d", min);
 
     return 0;
 }
