@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "io.h"
+
+#ifndef ARRAYS_H
+#define ARRAYS_H
+
 
 typedef struct {
     int character;
@@ -27,6 +32,12 @@ void fill_array(int *arr, int len) {
     }
 }
 
+void fill_random_array(int *arr, int len, int max) {
+
+    for (int i = 0; i < len; i++) {
+        arr[i] = rand() % (2 * max) - max;
+    }
+}
 
 void fill_matrix(int **arr, int rows, int columns) {
 
@@ -121,3 +132,5 @@ void remove_columns_after_index(td_array *arr, int rows, int start_index) {
         arr[i].character = start_index;
     }
 }
+
+#endif

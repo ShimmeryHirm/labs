@@ -1,3 +1,7 @@
+
+#ifndef SORTS_H
+#define SORTS_H
+
 void swap(int *a, int *b) {
     int temp = *a;
     *a = *b;
@@ -23,6 +27,18 @@ void neg_select_sort(int *arr, int len) {
     }
 }
 
+void neg_bubble_sort(int *arr, int len) {
+    int i, j;
+    for (i = 0; i < len - 1; i++) {
+        if (arr[i] >= 0) continue;
+
+        for (j = 0; j < len - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                swap(&arr[j], &arr[j + 1]);
+            }
+        }
+    }
+}
 
 void character_shell_sort(int **arr, int rows, int cols, int (*c_func)(int *, int)) {
 
@@ -37,3 +53,5 @@ void character_shell_sort(int **arr, int rows, int cols, int (*c_func)(int *, in
         }
     }
 }
+
+#endif

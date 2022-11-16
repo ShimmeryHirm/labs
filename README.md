@@ -80,7 +80,7 @@ k-ый элемент\
 
 ## Лабораторная 6
 
-**[Задача 1](https://github.com/ShimmeryHirm/labs/blob/master/lab5/task1.c)**. В одномерном массиве выполнить сортировку
+**[Задача 1](https://github.com/ShimmeryHirm/labs/blob/master/lab6/task1.c)**. В одномерном массиве выполнить сортировку
 отрицательных элементов методом выбора\
-**[Задача 2](https://github.com/ShimmeryHirm/labs/blob/master/lab5/task2.c)**. В матрице размером NxM выполнить
+**[Задача 2](https://github.com/ShimmeryHirm/labs/blob/master/lab6/task2.c)**. В матрице размером NxM выполнить
 сортировку строк по убываниюсуммы элементов с четными номерами столбцов методом Шелла.

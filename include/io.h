@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#ifndef IO_H
+#define IO_H
 
 void input(int *var, int min, int max, char *str) {
 
@@ -12,3 +14,4 @@ void input(int *var, int min, int max, char *str) {
     }
 }
 
+#endif
