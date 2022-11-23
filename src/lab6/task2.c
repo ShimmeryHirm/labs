@@ -1,5 +1,6 @@
 #include "arrays.h"
 #include "sorts.h"
+#include "input.h"
 
 int character(const int *row, int len) {
     int sum = 0;

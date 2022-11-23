@@ -1,22 +1,7 @@
+#include "arrays.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include "io.h"
-
-#ifndef ARRAYS_H
-#define ARRAYS_H
-
-
-typedef struct {
-    int character;
-    int *arr;
-} td_array;
-
-
-typedef enum {
-    false, true
-} bool;
-
+#include "input.h"
 
 void print_row(int *arr, int len) {
 
@@ -132,5 +117,3 @@ void remove_columns_after_index(td_array *arr, int rows, int start_index) {
         arr[i].character = start_index;
     }
 }
-
-#endif

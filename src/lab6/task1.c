@@ -1,5 +1,7 @@
 #include "arrays.h"
+#include "input.h"
 #include "sorts.h"
+
 #include <time.h>
 #include <mem.h>
 
@@ -13,7 +15,7 @@ int main() {
     input(&len, 1, INT_MAX, "Input len:");
 
     int *arr = (int *) malloc(len * sizeof(int *));
-    int *arr_copy = (int *) malloc(len * sizeof(int *));;
+    int *arr_copy = NULL;
 
     fill_random_array(arr, len, 1000);
     memcpy(arr_copy, arr, len * sizeof(int *));
